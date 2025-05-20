@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>fichiers.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%F0%9F%93%84-fichiers-essentiels-pour-un-projet-webpython">📄 Fichiers essentiels pour un projet web/Python</h1>
+<h2 id="sommaire">Sommaire</h2>
+<!-- TOC START -->
+<ul>
+<li><a href="#-fichiers-essentiels-pour-un-projet-webpython">📄 Fichiers essentiels pour un projet web/Python</a>
+<ul>
+<li><a href="#sommaire">Sommaire</a></li>
+<li><a href="#1-htaccess--pour-un-serveur-apache">1. <code>.htaccess</code> – Pour un serveur Apache</a>
+<ul>
+<li><a href="#utilit%C3%A9">Utilité</a></li>
+<li><a href="#exemples-dusages">Exemples d’usages</a></li>
+<li><a href="#exemple">Exemple</a></li>
+</ul>
+</li>
+<li><a href="#2-gitignore--pour-git">2. <code>.gitignore</code> – Pour Git</a>
+<ul>
+<li><a href="#bonnes-pratiques">Bonnes pratiques</a></li>
+<li><a href="#exemple-gitignore">Exemple <code>.gitignore</code></a></li>
+</ul>
+</li>
+<li><a href="#3-requirementstxt--pour-python">3. <code>requirements.txt</code> – Pour Python</a>
+<ul>
+<li><a href="#exemple-requirementstxt">Exemple <code>requirements.txt</code></a></li>
+</ul>
+</li>
+<li><a href="#4-deploysh--pour-le-d%C3%A9ploiement-dun-projet">4. <code>deploy.sh</code> – Pour le déploiement d'un projet</a>
+<ul>
+<li><a href="#exemple-deploysh">Exemple <code>deploy.sh</code></a></li>
+</ul>
+</li>
+<li><a href="#5-readmemd">5. <code>README.md</code></a></li>
+<li><a href="#6-fichiers-de-configuration-et-exemples">6. Fichiers de configuration et exemples</a>
+<ul>
+<li><a href="#61-exemple-de-db_connectsamplephp">6.1 Exemple de <code>db_connect.sample.php</code></a></li>
+<li><a href="#62-exemple-de-script-sql-bad_samplesql">6.2 Exemple de script SQL (<code>bad_sample.sql</code>)</a></li>
+<li><a href="#63-script-php-pour-importer-un-sql">6.3 Script PHP pour importer un SQL</a></li>
+<li><a href="#64-initialisation-mysql-en-python-flask">6.4 Initialisation MySQL en Python (Flask)</a></li>
+</ul>
+</li>
+<li><a href="#7-int%C3%A9gration-dans-le-projet">7. Intégration dans le projet</a></li>
+<li><a href="#8-exemple-de-readmemd">8. Exemple de <code>readme.md</code></a></li>
+<li><a href="#utilisation">Utilisation</a></li>
+<li><a href="#initialisation-de-la-base">Initialisation de la base</a></li>
+<li><a href="#contribution">Contribution</a></li>
+<li><a href="#r%C3%A9sum%C3%A9">Résumé</a></li>
+</ul>
+</li>
+</ul>
+<!-- TOC END -->
+<hr>
+<h2 id="1-htaccess-%E2%80%93-pour-un-serveur-apache">1. <code>.htaccess</code> – Pour un serveur Apache</h2>
+<h3 id="utilit%C3%A9">Utilité</h3>
+<p>Fichier de configuration local pour <strong>Apache</strong>. Il permet de modifier le comportement du serveur dans un dossier sans toucher à la config globale.</p>
+<h3 id="exemples-dusages">Exemples d’usages</h3>
+<ul>
+<li>Redirections et réécriture d’URL</li>
+<li>Contrôle d’accès (auth, IP, interdiction de fichiers)</li>
+<li>Forcer le HTTPS</li>
+<li>Gestion du cache</li>
+</ul>
+<h3 id="exemple">Exemple</h3>
+<pre class="hljs"><code><div><span class="hljs-comment"># Rediriger tout vers HTTPS</span>
+<span class="hljs-attribute"><span class="hljs-nomarkup">RewriteEngine</span></span> <span class="hljs-literal">On</span>
+<span class="hljs-attribute"><span class="hljs-nomarkup">RewriteCond</span></span> <span class="hljs-variable">%{HTTPS}</span> <span class="hljs-literal">off</span>
+<span class="hljs-attribute"><span class="hljs-nomarkup">RewriteRule</span></span> (.*) https://<span class="hljs-variable">%{HTTP_HOST}</span><span class="hljs-variable">%{REQUEST_URI}</span>
+
+<span class="hljs-comment"># Interdire l’accès à un fichier sensible</span>
+<span class="hljs-section">&lt;Files ".env"&gt;</span>
+  <span class="hljs-attribute"><span class="hljs-nomarkup">Order</span></span> allow,deny
+  <span class="hljs-attribute"><span class="hljs-nomarkup">Deny</span></span> from <span class="hljs-literal">all</span>
+<span class="hljs-section">&lt;/Files&gt;</span>
+</div></code></pre>
+<blockquote>
+<p>⚠️ À utiliser seulement si <code>.htaccess</code> est activé sur l’hébergement Apache.</p>
+</blockquote>
+<hr>
+<h2 id="2-gitignore-%E2%80%93-pour-git">2. <code>.gitignore</code> – Pour Git</h2>
+<p>Indique à Git quels fichiers/dossiers <strong>ignorer</strong> (non versionnés).</p>
+<h3 id="bonnes-pratiques">Bonnes pratiques</h3>
+<ul>
+<li>Exclure fichiers temporaires, secrets, configs locales, dépendances, etc.</li>
+<li>Garder un dépôt propre et sécurisé.</li>
+</ul>
+<h3 id="exemple-gitignore">Exemple <code>.gitignore</code></h3>
+<pre class="hljs"><code><div># Python
+__pycache__/
+*.pyc
+
+# Environnements virtuels
+venv/
+
+# Fichiers de config secrets
+.env
+
+# Logs et fichiers générés
+*.log
+
+# PHP/MySQL
+config/db.php
+*.sql
+</div></code></pre>
+<blockquote>
+<p>On peut générer un <code>.gitignore</code> adapté sur le site <a href="https://gitignore.io/">gitignore.io</a>.</p>
+</blockquote>
+<hr>
+<h2 id="3-requirementstxt-%E2%80%93-pour-python">3. <code>requirements.txt</code> – Pour Python</h2>
+<p>Liste toutes les dépendances Python du projet. Permet une installation rapide avec :</p>
+<pre class="hljs"><code><div>pip install -r requirements.txt
+</div></code></pre>
+<h3 id="exemple-requirementstxt">Exemple <code>requirements.txt</code></h3>
+<pre class="hljs"><code><div>flask==2.2.5
+numpy&gt;=1.23
+scikit-learn
+</div></code></pre>
+<blockquote>
+<p>On peut le générer avec la commande <code>pip freeze &gt; requirements.txt</code> (attention à ne pas inclure de paquets inutiles).</p>
+</blockquote>
+<hr>
+<h2 id="4-deploysh-%E2%80%93-pour-le-d%C3%A9ploiement-dun-projet">4. <code>deploy.sh</code> – Pour le déploiement d'un projet</h2>
+<p>Script shell pour <strong>automatiser le déploiement</strong> (build, install, lancement, copie, etc.).</p>
+<h3 id="exemple-deploysh">Exemple <code>deploy.sh</code></h3>
+<pre class="hljs"><code><div><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Déploiement en cours..."</span>
+
+<span class="hljs-comment"># Activer l'environnement virtuel</span>
+<span class="hljs-built_in">source</span> venv/bin/activate
+
+<span class="hljs-comment"># Installer les dépendances</span>
+pip install -r requirements.txt
+
+<span class="hljs-comment"># Lancer l'application</span>
+python app.py
+</div></code></pre>
+<blockquote>
+<p>Le rendre exécutable avec la commande <code>chmod +x deploy.sh</code>.</p>
+</blockquote>
+<hr>
+<h2 id="5-readmemd">5. <code>README.md</code></h2>
+<p>Documenter le projet : installation, usage, contribution, structure, bonnes pratiques, etc.</p>
+<blockquote>
+<p>C’est la <strong>vitrine</strong> du projet.</p>
+</blockquote>
+<hr>
+<h2 id="6-fichiers-de-configuration-et-exemples">6. Fichiers de configuration et exemples</h2>
+<h3 id="61-exemple-de-dbconnectsamplephp">6.1 Exemple de <code>db_connect.sample.php</code></h3>
+<p>Ne pas versionner les vrais codes et programmes d'accès (de connexion).<br>
+On doit utiliser un fichier exemple :</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// db_connect.sample.php</span>
+$host = <span class="hljs-string">'localhost'</span>;
+$dbname = <span class="hljs-string">'nom_de_la_base'</span>;
+$username = <span class="hljs-string">'utilisateur'</span>;
+$password = <span class="hljs-string">'mot_de_passe'</span>;
+
+<span class="hljs-keyword">try</span> {
+    $dsn = <span class="hljs-string">"mysql:host=$host;dbname=$dbname;charset=utf8mb4"</span>;
+    $pdo = <span class="hljs-keyword">new</span> PDO($dsn, $username, $password, [
+        PDO::ATTR_ERRMODE =&gt; PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE =&gt; PDO::FETCH_ASSOC,
+    ]);
+} <span class="hljs-keyword">catch</span> (PDOException $e) {
+    <span class="hljs-keyword">die</span>(<span class="hljs-string">"Erreur de connexion : "</span> . $e-&gt;getMessage());
+}
+</div></code></pre>
+<p>A ajouter dans <code>.gitignore</code> : (pour ignorer le vrai fichier de connexion : <code>db_connect.php</code>)</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Ne pas versionner les fichiers sensibles</span>
+backend_php/db_connect.php
+</div></code></pre>
+<hr>
+<h3 id="62-exemple-de-script-sql-badsamplesql">6.2 Exemple de script SQL (<code>bad_sample.sql</code>)</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">-- bad_sample.sql</span>
+<span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">IF</span> <span class="hljs-keyword">EXISTS</span> utilisateurs;
+
+<span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> utilisateurs (
+    <span class="hljs-keyword">id</span> <span class="hljs-built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="hljs-keyword">KEY</span>,
+    nom <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    email <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">150</span>) <span class="hljs-keyword">UNIQUE</span> <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    mot_de_passe <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">255</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    date_creation <span class="hljs-built_in">TIMESTAMP</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-keyword">CURRENT_TIMESTAMP</span>
+);
+
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> utilisateurs (nom, email, mot_de_passe) <span class="hljs-keyword">VALUES</span>
+(<span class="hljs-string">'Charles'</span>, <span class="hljs-string">'charles@carnus.fr'</span>, <span class="hljs-string">'motdepasse1'</span>),
+(<span class="hljs-string">'Carnus'</span>, <span class="hljs-string">'carnus@carnus.fr'</span>, <span class="hljs-string">'motdepasse2'</span>),
+(<span class="hljs-string">'Bts'</span>, <span class="hljs-string">'bts@carnus.fr'</span>, <span class="hljs-string">'motdepasse3'</span>);
+</div></code></pre>
+<hr>
+<h3 id="63-script-php-pour-importer-un-sql">6.3 Script PHP pour importer un SQL</h3>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// import_db.php</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">'db_connect.php'</span>;
+
+$sqlFile = <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/bad_sample.sql'</span>;
+<span class="hljs-keyword">if</span> (!file_exists($sqlFile)) <span class="hljs-keyword">die</span>(<span class="hljs-string">"Fichier SQL non trouvé : $sqlFile"</span>);
+
+<span class="hljs-keyword">try</span> {
+    $sql = file_get_contents($sqlFile);
+    $pdo-&gt;exec($sql);
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">"Import SQL réussi !\n"</span>;
+} <span class="hljs-keyword">catch</span> (PDOException $e) {
+    <span class="hljs-keyword">die</span>(<span class="hljs-string">"Erreur lors de l'import SQL : "</span> . $e-&gt;getMessage());
+}
+</div></code></pre>
+<hr>
+<h3 id="64-initialisation-mysql-en-python-flask">6.4 Initialisation MySQL en Python (Flask)</h3>
+<p>Installer la librairie :</p>
+<pre class="hljs"><code><div>pip install mysql-connector-python
+</div></code></pre>
+<p>Exemple :</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> mysql.connector
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">init_db</span><span class="hljs-params">()</span>:</span>
+    cnx = mysql.connector.connect(
+        user=<span class="hljs-string">'user'</span>, password=<span class="hljs-string">'mdp'</span>, host=<span class="hljs-string">'localhost'</span>, database=<span class="hljs-string">'base'</span>
+    )
+    cursor = cnx.cursor()
+    cursor.execute(<span class="hljs-string">"DROP TABLE IF EXISTS utilisateurs"</span>)
+    cursor.execute(<span class="hljs-string">"""
+        CREATE TABLE utilisateurs (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            nom VARCHAR(100) NOT NULL,
+            email VARCHAR(150) UNIQUE NOT NULL,
+            mot_de_passe VARCHAR(255) NOT NULL,
+            date_creation TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    """</span>)
+    users = [
+        (<span class="hljs-string">'Charles'</span>, <span class="hljs-string">'charles@carnus.fr'</span>, <span class="hljs-string">'motdepasse1'</span>),
+        (<span class="hljs-string">'Carnus'</span>, <span class="hljs-string">'carnus@carnus.fr'</span>, <span class="hljs-string">'motdepasse2'</span>),
+        (<span class="hljs-string">'Bts'</span>, <span class="hljs-string">'bts@carnus.fr'</span>, <span class="hljs-string">'motdepasse3'</span>)
+    ]
+    cursor.executemany(
+        <span class="hljs-string">"INSERT INTO utilisateurs (nom, email, mot_de_passe) VALUES (%s, %s, %s)"</span>, users
+    )
+    cnx.commit()
+    cursor.close()
+    cnx.close()
+    print(<span class="hljs-string">"Base initialisée !"</span>)
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    init_db()
+</div></code></pre>
+<hr>
+<h2 id="7-int%C3%A9gration-dans-le-projet">7. Intégration dans le projet</h2>
+<ul>
+<li>
+<p><strong>PHP</strong> :<br>
+Copier <code>db_connect.sample.php</code> → <code>db_connect.php</code> et renseigner les vrais codes d'accès<br>
+Puis lancer :</p>
+<pre class="hljs"><code><div>php backend_php/import_db.php
+</div></code></pre>
+</li>
+<li>
+<p><strong>Python (Flask)</strong> :<br>
+Lancer :</p>
+<pre class="hljs"><code><div>python backend_flask/init_db.py
+</div></code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="8-exemple-de-readmemd">8. Exemple de <code>readme.md</code></h2>
+<pre class="hljs"><code><div><span class="hljs-section"># MonProjet</span>
+
+Projet pour ...
+
+<span class="hljs-section">## Installation</span>
+
+<span class="hljs-code">```bash
+git clone https://github.com/mon_utilisateur/mon_projet.git
+cd mon_projet
+pip install -r requirements.txt
+</span></div></code></pre>
+<h2 id="utilisation">Utilisation</h2>
+<pre class="hljs"><code><div>python app.py --image <span class="hljs-string">"image.jpg"</span>
+</div></code></pre>
+<h2 id="initialisation-de-la-base">Initialisation de la base</h2>
+<ul>
+<li>
+<p><strong>PHP</strong> :<br>
+Copier <code>db_connect.sample.php</code> → <code>db_connect.php</code><br>
+puis :</p>
+<pre class="hljs"><code><div>php backend_php/import_db.php
+</div></code></pre>
+</li>
+<li>
+<p><strong>Python</strong> :</p>
+</li>
+<li></li>
+</ul>
+<pre class="hljs"><code><div>python backend_flask/init_db.py
+</div></code></pre>
+<h2 id="contribution">Contribution</h2>
+<p>Les PR sont les bienvenues !</p>
+<hr>
+<h2 id="r%C3%A9sum%C3%A9">Résumé</h2>
+<table>
+<thead>
+<tr>
+<th>Fichier</th>
+<th>Rôle</th>
+<th>Projet concerné</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.htaccess</code></td>
+<td>Config Apache</td>
+<td>Web</td>
+</tr>
+<tr>
+<td><code>.gitignore</code></td>
+<td>Exclusion Git</td>
+<td>Tous</td>
+</tr>
+<tr>
+<td><code>requirements.txt</code></td>
+<td>Dépendances Python</td>
+<td>Python</td>
+</tr>
+<tr>
+<td><code>deploy.sh</code></td>
+<td>Script de déploiement</td>
+<td>DevOps</td>
+</tr>
+<tr>
+<td><code>README.md</code></td>
+<td>Documentation de projet</td>
+<td>Tous</td>
+</tr>
+</tbody>
+</table>
+<hr>
+
+</body>
+</html>

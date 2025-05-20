@@ -1,0 +1,20 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --primary-color: #4c6ef5;
+  --card-bg: #f8f9fa;
+}
+
+body.light-theme {
+/* ... */
+}
+
+body.dark-theme {
+/* ... */
+}
+
+body {
+/* ... */
+}
+
+/*  ...   */
