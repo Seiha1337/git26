@@ -8,7 +8,7 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?logo=javascript)
 
 [![Status](https://img.shields.io/badge/Status-En%20développement-yellow)]()
-![GitHub repo size](https://img.shields.io/github/repo-size/boudjelaba/Dos_Etu)
+![GitHub repo size](https://img.shields.io/github/repo-size/boudjelaba/CIEL2)
 ![GitHub issues](https://img.shields.io/github/issues/boudjelaba/Dos_Etu)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/boudjelaba/Dos_Etu)
 ![GitHub last commit](https://img.shields.io/github/last-commit/boudjelaba/Dos_Etu)
