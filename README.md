@@ -384,7 +384,7 @@ Bienvenue ! Ce dépôt est un **template de projet** destiné aux étudiant·es 
 
 ---
 
-## 🎯 Objectifs pédagogiques
+## Objectifs pédagogiques
 
 Ce template vise à initier les étudiant·es à :
 
@@ -395,7 +395,7 @@ Ce template vise à initier les étudiant·es à :
 
 ---
 
-## 📦 Contenu du template
+## Contenu du template
 
 ```bash
 📁 {{ cookiecutter.nom_repo }}/
