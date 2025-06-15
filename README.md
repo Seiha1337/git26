@@ -16,7 +16,7 @@
 
 > Un projet modulaire pour tester, analyser et développer des solutions innovantes.
 
-[![Use this template](https://img.shields.io/badge/GitHub-Use%20this%20template-brightgreen?logo=github)](https://github.com/boudjelaba/cookiecutter-projet-reseau/generate)
+[![Use this template](https://img.shields.io/badge/GitHub-Use%20this%20template-brightgreen?logo=github)](https://github.com/boudjelaba/Dos_Etu/generate)
 
 ---
 
