@@ -369,3 +369,44 @@ python generate_toc.py
 <!-- TOC START -->
 <!-- TOC END -->
 ```
+
+
+
+---
+---
+
+
+## Template de Projet Réseau & Développement — CIEL
+
+[![Use this template](https://img.shields.io/badge/GitHub-Use%20this%20template-brightgreen?logo=github)](https://github.com/boudjelaba/Dos_Etu/generate)
+
+Bienvenue ! Ce dépôt est un **template de projet** destiné aux étudiant·es CIEL (Informatique - Réseaux) dans le cadre d’un projet mêlant développement logiciel et réseau.
+
+---
+
+## 🎯 Objectifs pédagogiques
+
+Ce template vise à initier les étudiant·es à :
+
+- la gestion de projet collaboratif,
+- l’organisation d’un dépôt Git/GitHub propre,
+- la structuration d’un code source réutilisable,
+- la documentation et le suivi de projet.
+
+---
+
+## 📦 Contenu du template
+
+```bash
+📁 {{ cookiecutter.nom_repo }}/
+├── README.md                → Ce fichier
+├── .gitignore               → Fichiers à exclure du versionnage
+├── code/                    → Code source principal
+│   └── main.py
+├── rapport/                 → Rapport de projet
+│   └── rapport_{{ cookiecutter.année_académique }}.md
+├── journal/                 → Journal de bord
+│   └── journal_bord.md
+├── doc/                     → Documentation utilisateur
+│   └── notice_utilisateur.md
+```
